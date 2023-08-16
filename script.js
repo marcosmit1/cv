@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showCV() {
       // Pause the audio
       const loadingAudio = document.getElementById("loadingAudio");
-      loadingAudio.pause();
+
     
       landingContainer.style.display = "none";
       loadingContainer.style.display = "flex";
