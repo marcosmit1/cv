@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const greetings = ["","","","","Jacobus", "Hermanus","Marco", "Smit"];
+    const greetings = ["","","Jacobus", "Hermanus","Marco", "Smit"];
     let currentGreetingIndex = 0;
   
     const greetingElement = document.getElementById("greeting");
