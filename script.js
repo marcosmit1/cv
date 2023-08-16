@@ -18,14 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     function showCV() {
+      // Pause the audio
+      const loadingAudio = document.getElementById("loadingAudio");
+      loadingAudio.pause();
+    
       landingContainer.style.display = "none";
       loadingContainer.style.display = "flex";
-  
+    
       setTimeout(function () {
         loadingContainer.style.display = "none";
         cvContainer.style.display = "block";
-      }, 500); // Change this value to 500 milliseconds for 0.5 seconds
+      }, 500);
     }
+    
   
     const greetingInterval = setInterval(displayNextGreeting, 1000);
   });
