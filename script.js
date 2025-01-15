@@ -1,37 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const greetings = ["","Jacobus", "Hermanus","Marco", "Smit"];
-    let currentGreetingIndex = 0;
-  
-    const greetingElement = document.getElementById("greeting");
-    const landingContainer = document.querySelector(".landing-container");
-    const loadingContainer = document.querySelector(".loading-container");
-    const cvContainer = document.querySelector(".cv-container");
-  
-    function displayNextGreeting() {
-      if (currentGreetingIndex < greetings.length) {
-        greetingElement.textContent = greetings[currentGreetingIndex];
-        currentGreetingIndex++;
-      } else {
-        clearInterval(greetingInterval);
-        showCV();
-      }
-    }
-  
-    function showCV() {
-      // Pause the audio
-      const loadingAudio = document.getElementById("loadingAudio");
-
-    
-      landingContainer.style.display = "none";
-      loadingContainer.style.display = "flex";
-    
-      setTimeout(function () {
-        loadingContainer.style.display = "none";
-        cvContainer.style.display = "block";
-      }, 500);
-    }
-    
-  
-    const greetingInterval = setInterval(displayNextGreeting, 1000);
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
   });
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Observe all sections
+  document.querySelectorAll('.section').forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Navigation background change on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(255, 255, 255, 0.9)';
+    } else {
+      nav.style.background = 'rgba(255, 255, 255, 0.8)';
+    }
+  });
+});
   
